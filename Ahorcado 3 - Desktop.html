@@ -1,0 +1,262 @@
+<html lang="es">
+    <head>
+
+        <meta charset= "UTF-8">
+        <title>Desafio 2 - Juego de ahorcado</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <h1 class="logo"><img src="Vector.png"></h1>
+
+        </header>
+
+        <main>
+            <div class="inputAhorcado">
+                <label class="dibujoAhorcado">
+                    <canvas class="ahorcado" width=294 height=360></canvas>
+
+                </label>
+                <label class="letrasLineas">
+
+                    <canvas id="lineas" class="letrasPantalla" width=752 height=378px></canvas>
+                </label>
+
+            </div>   
+            <div class="botonesJuego">
+            <button type="button" onclick="nuevoJuego()"  class="botonNuevo">Nuevo Juego</button>
+            <button type="button" onclick="desistir()" class="botonDesistir">Desistir</button>
+            </div>
+        </main>
+        <script>
+            var listaGlobal1 = sessionStorage.getItem("listaGlobal");
+            let listaGlobal2 = listaGlobal1.split(',');
+            var aleatorio = (Math.floor(Math.random() * listaGlobal2.length))
+            let palabraMayuscula = listaGlobal2[aleatorio];
+            console.log(listaGlobal2);
+
+            const numeroLetras = palabraMayuscula.length;  
+            var pantalla = document.querySelector("canvas");
+            var pincel = pantalla.getContext("2d");
+            const canvas = document.getElementById("lineas")
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = "#0A3871";
+            var coordenadasLetras = [];
+            const letrasCorrectas = palabraMayuscula.split("");
+            ctx.font = "42px Inter";
+            var posicionLetra = [];
+            pincel.fillStyle = "#0A3871";
+            const letrasPuestas = [];
+            var aciertosCorretos = 0;
+            let listaString = listaGlobal2.toString();
+
+           
+            
+            function nuevoJuego(){
+                
+                var x = true;
+                sessionStorage.setItem("x", x);
+                sessionStorage.setItem("listaGlobal", listaGlobal1);
+                window.location.href= "Ahorcado 3 - Desktop.html";
+
+            }
+            
+                function desistir(){
+
+                window.location.href= "Ahorcado- 1 Desktop.html";
+            }
+
+
+            function dibujarCabeza(x,y,radio,color){
+                pincel.fillStyle = color;
+            pincel.beginPath();
+            pincel.arc(x, y, radio, 0, 2*3.14);
+            pincel.fill();               
+            }
+
+            function dibujarLineas(numeroLetras){
+                var x = 0 ;
+               
+
+                for(var a = 0 ; a < numeroLetras; a++ ){   
+                   // alert(x);                
+                    ctx.fillRect(x,120,80,4);
+                    coordenadasLetras.push(x+28);
+                    posicionLetra.push(a);
+                    x = x+96;
+                    
+                    
+                }
+            
+
+
+            }
+
+            function ganador(){
+
+               
+                pincel.setTransform(1, 0, 0, 1, 0, 0);
+                pincel.fillStyle = "green";
+                pincel.font = "50px Montserrat";
+                pincel.fillText("Ganaste, felicidades!", 87, 350);
+               
+                
+
+                
+            }
+
+            function dibujarCorrecto(letraPantalla){                              
+                    
+                        if(!letrasPuestas.includes(letraPantalla)){
+
+                            letrasPuestas.push(letraPantalla);
+                            
+                            
+                            if(palabraMayuscula.includes(letraPantalla)){
+
+                                for(var a = 0; a<numeroLetras;a++){
+                                    
+                                    if(letraPantalla==letrasCorrectas[a]){
+                                        ctx.fillStyle = "#0A3871";
+                                        ctx.font = "42px Montserrat";
+                                        ctx.fillText(letraPantalla, coordenadasLetras[a], 100);
+                                        aciertosCorretos++;
+
+                                        if (aciertosCorretos==numeroLetras){
+                                            setTimeout(ganador, 200);    
+
+                                        }
+                                    }
+
+                                }
+                                
+                                
+                            }
+                            else{
+                                
+                                ctx.fillStyle='#495057';
+                                ctx.font = "24px Montserrat";
+                                ctx.fillText(letraPantalla, contador, 150);
+                                intento ++; 
+                                contador = contador+25;
+                                dibujarAhorcado(intento);
+                                }
+                            }   
+                        }
+
+             function dibujarAhorcado(intento){
+                if(intento==1){
+                    pincel.fillRect(0, 355,294 , 5);    
+
+                }
+                if(intento==2){
+                    pincel.fillRect(80.67, 0,4.5 , 360);
+                }
+                if(intento==3){
+                    pincel.fillRect(80.67, 0,177.75 , 4.5);
+                }
+                if(intento==4){
+                    pincel.fillRect(253.92, 0,4.5 , 49.5);
+                }
+                if(intento==5){
+                    dibujarCabeza(256.17,76.5,31.5,"#0A3871");
+                    dibujarCabeza(256.17,76.5,26.5,"white");
+                }
+                if(intento==6){
+                    pincel.fillStyle = "#0A3871";
+                    pincel.fillRect(253.92, 108,4.5,135);
+                }
+                if(intento==7){
+                    pincel.rotate(30 * Math.PI / 180);
+                    pincel.fillRect(274, -32,4.5,72);
+                }
+                if(intento==8){
+                    pincel.setTransform(1, 0, 0, 1, 0, 0);
+                    pincel.rotate(329 * Math.PI / 180);
+                     pincel.fillRect(161 ,226,4.5,72);
+                }
+                if(intento==9){
+                    pincel.setTransform(1, 0, 0, 1, 0, 0);
+                    pincel.rotate(329 * Math.PI / 180);
+                    pincel.fillRect(93 ,339,4.5,72);
+                }
+                if(intento==10){
+                    pincel.setTransform(1, 0, 0, 1, 0, 0);
+                     pincel.rotate(30 * Math.PI / 180);
+                    pincel.fillRect(340, 79,4.5,72);
+                }
+                   
+
+                
+             }
+             
+             function perdiste(){
+                alert("Son maximo 10 intentos");
+                
+                ctx.fillStyle = "red";
+                ctx.font = "42px Montserrat";
+                for(var a = 0 ;a<letrasCorrectas.length;a++){
+               ctx.fillText(letrasCorrectas[a], coordenadasLetras[a], 100);
+                    
+            }
+
+        
+             }
+          
+           
+                pincel.setTransform(1, 0, 0, 1, 0, 0);
+              // alert(palabraMayuscula + numeroLetras)
+               
+               var intento = 0;
+               var contador = 0; 
+               
+               document.addEventListener("keydown", function(event) {
+               
+                console.log(event.which);
+                var letraPantalla = String.fromCharCode(event.which);
+                console.log(letraPantalla);
+
+                
+
+                if(intento<11){
+
+                    if(event.which>64 && event.which <91){
+
+                        dibujarCorrecto(letraPantalla);
+                        
+                    
+                    
+                    console.log(intento);
+                    console.log(contador);
+                    
+                    }    
+                }   
+                if (intento==10){
+                    pincel.setTransform(1, 0, 0, 1, 0, 0);
+                    pincel.fillStyle = "red";
+                    pincel.font = "50px Montserrat";
+                    pincel.fillText("Perdiste", 87, 350);
+                    setTimeout(perdiste, 150)
+                    
+
+                }
+            })
+                
+                
+            dibujarLineas(numeroLetras);
+
+            console.log(letrasCorrectas);
+            console.log(posicionLetra);
+            
+          
+
+        </script>
+    </body>
+
+
+</html>

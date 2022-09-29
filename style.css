@@ -1,0 +1,368 @@
+main{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 40px;
+    
+    position: absolute;
+    width: 120px;
+    height: 48px;
+    left: 40px;
+    top: 40px;
+    
+}
+
+.inicio{
+
+    margin: 2% -2% 2% 11%;
+
+}
+.botonIniciar{
+    font: inherit;
+    position: absolute;
+ color: white;
+ background-color: #0A3871;
+ width: 317px;
+ height: 114px;
+ text-align: center;
+ border-radius: 24px;
+border: #0A3871;
+padding: 24px;
+margin-top: 314px ;
+margin-left: 561px;
+box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+cursor: pointer;
+transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.botonIniciar:hover,
+.botonIniciar:focus {
+  background-color: #1e5ba5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  
+}
+
+
+  
+  .botonIniciar:active,.botonNuevo:hover {
+    background-color: #0A3871;
+    
+    
+  }
+
+.botonAgregar{
+    font: inherit;
+    position: absolute;
+    margin-top: 466px ;
+    margin-left:579px;
+    color: #0A3871;
+    background-color: white;
+    width: 280px;
+    height: 67px;
+    text-align: center;
+    border-radius: 24px;
+   border-color: #0A3871;
+   padding: 24px;
+   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+cursor: pointer;
+transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.botonAgregar:hover,
+.botonAgregar:focus {
+box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+}
+  .botonAgregar:active {
+    box-shadow: none;
+    
+  }
+
+/* Pagina Ingresar Palabra*/
+input, input:active{
+    border: none; 
+    color: #0A3871;
+    font-size: 32px    ;
+    margin-top: 168px;
+    margin-left: 376px;
+    outline:none;
+    text-transform: uppercase;
+     }
+
+::placeholder{
+    color: #0A3871;
+    font-weight: 400;
+    line-height: 48px;
+    text-transform: none;
+    
+}  
+
+
+.textoEstatico{
+    margin-top: 363px;
+    margin-left: 376px;
+    display: flex;
+   
+}
+
+.textoEstatico img{
+    height: 16px;
+    width: 16px;
+
+}
+.textoEstatico p {
+    font-weight: 400px; 
+    font-size: 12px;  
+line-height: 150%;
+opacity: 0.8;
+margin-left: 8px;
+
+}
+.botones{
+display: flex;
+margin-top: 16px;
+}
+.botonGuardar{
+    font: inherit;
+    position: absolute;
+ color: white;
+ background-color: #0A3871;
+ width: 332px;
+ height: 67px;
+ text-align: center;
+ border-radius: 24px;
+border: #0A3871;
+padding: 24px;
+margin-left: 376px;
+box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+cursor: pointer;
+transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.botonGuardar:hover,
+.botonGuardar:focus {
+  background-color: #1e5ba5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+  
+.botonGuardar:active {
+    background-color: #0A3871;
+    
+    
+  }
+
+
+
+
+
+
+.botonCancelar{
+    font: inherit;
+    position: absolute;
+    margin-left:732px;
+    color: #0A3871;
+    background-color: white;
+    width: 332px;
+ height: 67px;
+    text-align: center;
+    border-radius: 24px;
+   border-color: #0A3871;
+   padding: 24px;
+   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+cursor: pointer;
+transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.botonCancelar:hover,
+.botonCancelar:focus,
+.botonDesistir:hover,
+.botonDesistir:focus {
+box-shadow: rgba(0, 0, 0, 0.5) 0 4px 12px;
+}
+  .botonCancelar:active,.botonDesistir:active {
+    box-shadow: none;
+    
+  }
+
+/* Iniciar Juego */
+
+.inputAhorcado{
+    margin: 183px 376px 56px 275px;
+    height: 626px;
+    margin-top: 109px;
+
+}
+
+.dibujoAhorcado{
+    position: relative;
+margin-left: 45%;
+margin-top: 120px;
+}
+.ahorcado{
+        margin-top: 60px;
+
+}
+
+.letrasLineas{
+  margin-top: 100px;
+
+}
+
+.letrasPantalla{
+    align-items: center;
+    margin-left: 28%;
+    padding: 4%;
+    font-family: 'Montserrat', sans-serif;
+}
+.botonesJuego{
+display: flex;
+margin: 183px 376px 56px 260px;
+align-items: center;
+
+}
+.botonNuevo{
+    font: inherit;
+    position: absolute;
+ color: white;
+ background-color: #0A3871;
+ width: 332px;
+ height: 67px;
+ text-align: center;
+ border-radius: 24px;
+border: #0A3871;
+padding: 24px;
+margin-left: 376px;
+box-shadow: rgba(0, 0, 0, 0.2) 0 1px 3px 0;
+cursor: pointer;
+transition: all 250ms;
+     user-select: none;
+     -webkit-user-select: none;
+     touch-action: manipulation;
+ 
+}
+
+.botonNuevo:hover,
+.botonNuevo:focus {
+    background-color: #0A3871;
+    
+  }
+
+.botonDesistir{
+    font: inherit;
+    position: absolute;
+    margin-left:732px;
+    color: #0A3871;
+    background-color: white;
+    width: 332px;
+ height: 67px;
+    text-align: center;
+    border-radius: 24px;
+   border-color: #0A3871;
+   padding: 24px;
+   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+   cursor: pointer;
+   transition: all 250ms;
+     user-select: none;
+     -webkit-user-select: none;
+     touch-action: manipulation;
+}
+
+@media screen and (max-width:376px) {
+
+    .inicio{
+    
+        margin: auto;
+    }
+    
+    .inputAhorcado{
+    scale: 1;
+    
+    }
+    
+    .botonesJuego{
+    
+    
+        margin:10% 10% 10% 10%;
+    }
+    
+    
+    
+    
+    
+        }
+        
+@media screen and (max-width:1024px) {
+
+.logo{
+    scale: 1.5;
+    margin-top: 9.04%;
+    margin-left: 4%;
+
+}
+.inicio{
+
+    margin: 2% 3% 1% 2%;
+
+}
+ .botonIniciar{
+    margin-top: 55%;
+    margin-left: 35%;
+    scale: 1.9;
+ }
+.botonAgregar{
+    margin-top: 85%;
+    margin-left: 37%;
+    scale: 1.9;
+}
+
+.contenido{
+    margin: -2% 1% 1% -14%;
+
+}
+.inputAhorcado{
+    scale: 2.5;
+    margin: 71% -31% 21% 14%;
+
+}
+
+.contenidoAgregar{
+scale: 1.8;
+margin-top: 600;
+margin-right: 2;
+}
+  .dibujoAhorcado{
+
+
+  }
+  .botonesJuego{
+
+    margin-top: 1148px;
+  }
+  .botonNuevo{
+    scale: 3.2;
+    margin: 1101px -65px 18px 123px;
+
+
+  }
+
+  .botonDesistir{
+    scale: 3.2;
+    margin: 399px 299px -682px 1224px;
+  }
+
+
+    }
+    

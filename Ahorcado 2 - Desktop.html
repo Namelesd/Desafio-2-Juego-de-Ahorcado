@@ -1,0 +1,130 @@
+<html lang="es">
+    <head>
+
+        <meta charset= "UTF-8">
+        <title>Desafio 2 - Juego de ahorcado</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <h1 class="logo"><img src="Vector.png"></h1>
+
+        </header>
+        
+        <main>
+    <div class="contenido">    
+                <div class="contenidoAgregar">
+
+            <input onkeypress=" return event.charCode > 64 && event.charCode < 91 || event.charCode > 96 && event.charCode < 123 " type="text" id="palabraAgregada" class="padron" maxlength="8" placeholder="Ingrese una palabra">
+            
+            <div class="textoEstatico">
+                <p class="iFoto"><img src="i.png"></p> 
+                <p>Máx. de 8 letras</p>
+            </div>   
+
+            <div class="botones">
+                <button onclick="agregarPalabra(input)" type="button" class="botonGuardar" id="guardar">Guardar y empezar</button>
+                <button onclick="cancelar()" type="button" class="botonCancelar">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+            <script type="text/javascript">
+                let listaBuena = "";
+       
+
+
+                var input = document.querySelector("input");
+                
+                
+                let listaBuena2 = [];
+
+                function transformarLista(listaBuena){
+
+                    
+                    escojerLista(listaBuena2.length);
+                }
+
+                function escojerLista(limite){
+                    var aleatorio = (Math.round(Math.random()*limite))
+
+                    palabraMayuscula = listaBuena2[aleatorio];
+
+                    sessionStorage.setItem("palabraBuena", palabraMayuscula)
+
+
+                }
+
+                function agregarPalabra(input){
+
+                    listaBuena = sessionStorage.getItem("listaGlobal");
+                    listaBuena2 = listaBuena.split(',');
+                    let palabraAgregada = input.value;
+                    let palabraMayuscula = palabraAgregada.toUpperCase();
+                    var length = palabraAgregada.length;
+
+                    if (length==0){
+                 
+                        alert("Tienes que agregar mas de 0 letras");
+                       
+                    }
+                    if (length>0){
+
+                        for(var a=0;a<listaBuena2.length;a++){
+
+                            if(palabraMayuscula===listaBuena2[a]){
+                             alert("Esta palabra ya esta en la lista")
+                             break;
+
+                            }
+
+                          
+                        }
+                        if(palabraMayuscula!=listaBuena2[a]){
+                            listaBuena = listaBuena+","+palabraMayuscula;
+                            transformarLista(listaBuena);                        
+                            listaBuena2.push(palabraMayuscula);
+                           // console.log(listaBuena); 
+                           // console.log(listaBuena2);
+                            var listaBuena3 = listaBuena2.toString();
+                           // console.log(listaBuena3);
+                            sessionStorage.setItem("listaGlobal", listaBuena3);
+                            var x = true;
+                            sessionStorage.setItem("x", x);
+                           window.location.href= "Ahorcado 3 - Desktop.html";
+                           }                                                          
+                        
+                            
+
+                        
+                         
+                                          
+                    }
+
+                    input.value = "";
+                    input.focus();
+                    
+                }
+                function cancelar(){
+                    window.location.href= "Ahorcado- 1 Desktop.html";
+
+                }
+
+                
+	            input.focus();
+                var button = document.querySelector("button");
+                
+                           
+
+            </script>
+        </main>
+
+    </body>
+
+
+</html> 

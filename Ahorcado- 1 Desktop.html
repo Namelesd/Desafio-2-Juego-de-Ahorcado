@@ -1,0 +1,87 @@
+<html lang="es">
+    <head>
+
+        <meta charset= "UTF-8">
+        <title>Desafio 2 - Juego de ahorcado</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link rel="javascript" href="listadepalabras.js">
+    </head>
+    <body>
+        <header>
+            <h1 class="logo"><img src="Vector.png"></h1>
+        </header>
+
+        <main class="menu">
+            <div class="inicio">
+                <button type="button" onclick="iniciarJuego()" name="iniciar" class="botonIniciar">Iniciar Juego</button>
+                <button type="button" onclick ="agregarPalabra()" class="botonAgregar">Agregar nueva palabra</button>
+            </div>   
+            <script type="text/javascript">
+
+              
+                var y = sessionStorage.getItem("x");
+              
+                let listaGlobal1 ="";
+                let listaGlobal2 = [];
+                console.log(y);
+                console.log(listaGlobal1);
+                var aleatorio = 0;
+
+                
+
+               function escojerLista(){
+
+               if(y===null){ listaGlobal1= "PODEROSO,ZEUS,CAOS" 
+                             listaGlobal2 = listaGlobal1.split(','); 
+                            console.log("entro1")
+                            console.log(listaGlobal1)
+                            console.log(listaGlobal2)
+                            console.log(listaGlobal2.length)
+                             aleatorio = Math.floor(Math.random() * listaGlobal2.length);
+                            return listaGlobal2;}
+
+                if(y!==null) {  listaGlobal1 = sessionStorage.getItem("listaGlobal");
+                                console.log("entro")
+                                 listaGlobal2 = listaGlobal1.split(',');
+                                 aleatorio = Math.floor(Math.random() * listaGlobal2.length);
+                                return listaGlobal2;
+                }
+               
+                }
+                
+              
+
+                
+                var button = document.querySelector("button")
+            
+           
+                function iniciarJuego(){
+
+                    escojerLista(y);
+                    console.log(listaGlobal1)
+                       sessionStorage.setItem("listaGlobal", listaGlobal1);
+                        sessionStorage.setItem("palabraBuena", listaGlobal2[aleatorio])
+                        console.log(listaGlobal2[aleatorio]);
+                        console.log(listaGlobal1)
+                        window.location.href= "Ahorcado 3 - Desktop.html";
+              
+                }
+                function agregarPalabra(){
+                    escojerLista(y);
+                    sessionStorage.setItem("listaGlobal", listaGlobal1);
+                    window.location.href= "Ahorcado 2 - Desktop.html";
+
+                }
+             
+               
+            </script>
+        </main>
+
+    </body>
+
+
+</html>
